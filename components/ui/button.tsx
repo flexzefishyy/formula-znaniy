@@ -51,13 +51,14 @@ export function Button({
   if (href) {
     return (
       <motion.a
-        href={href}
-        className={classes}
-        whileHover={{ scale: 1.02, y: -1 }}
-        whileTap={{ scale: 0.98 }}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-      >
+  href={href}
+  className={classes}
+  whileHover={{ scale: 1.02, y: -1 }}
+  whileTap={{ scale: 0.98 }}
+  onClick={onClick}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
         {children}
       </motion.a>
     );
