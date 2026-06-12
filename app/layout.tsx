@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Manrope, Onest } from "next/font/google";
 import "./globals.css";
 
@@ -51,6 +52,11 @@ export default function RootLayout({
       className={`${manrope.variable} ${onest.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-background text-foreground antialiased font-sans">
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="a7399af5-19e0-43b2-8393-0c98aaf64d0d"
+        />
         {children}
       </body>
     </html>
