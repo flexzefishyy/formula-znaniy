@@ -6,7 +6,13 @@ import { SITE } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { FloatingGradients } from "@/components/ui/floating-gradients";
 import { TelegramIcon, VKIcon } from "@/components/ui/icons";
-
+declare global {
+  interface Window {
+    umami?: {
+      track: (event: string) => void;
+    };
+  }
+}
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = (delay: number) => ({
@@ -64,6 +70,7 @@ export function HeroSection() {
   external
   size="lg"
   className="!bg-[#133215] !text-white hover:!bg-[#1B451F]"
+  onClick={() => window.umami?.track("Записаться")}
 >
   Записаться на занятие
 </Button>
@@ -76,14 +83,26 @@ export function HeroSection() {
               {...fadeUp(0.55)}
               className="mt-10 flex gap-3 border-t border-border pt-8"
             >
-              <Button href={SITE.telegram} variant="outline" external size="md">
-              <TelegramIcon className="h-4 w-4 text-[#92B775]" />
-                Telegram
-              </Button>
-              <Button href={SITE.vk} variant="outline" external size="md">
-              <VKIcon className="h-4 w-4 text-[#92B775]" />
-                VK
-              </Button>
+              <Button
+  href={SITE.telegram}
+  variant="outline"
+  external
+  size="md"
+  onClick={() => window.umami?.track("Telegram")}
+>
+  <TelegramIcon className="h-4 w-4 text-[#92B775]" />
+  Telegram
+</Button>
+<Button
+  href={SITE.vk}
+  variant="outline"
+  external
+  size="md"
+  onClick={() => window.umami?.track("VK")}
+>
+  <VKIcon className="h-4 w-4 text-[#92B775]" />
+  VK
+</Button>
             </motion.div>
           </motion.div>
 
